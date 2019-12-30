@@ -1,0 +1,1646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="smple-repo" default="all">
+  
+  
+  <property file="smple-repo.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.ane"/>
+    <include name="*.klib"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.11" value="${jdk.home.11}/bin"/>
+  <path id="jdk.classpath.11">
+    <fileset dir="${jdk.home.11}">
+      <include name="../jbr!/java.base"/>
+      <include name="../jbr!/java.compiler"/>
+      <include name="../jbr!/java.datatransfer"/>
+      <include name="../jbr!/java.desktop"/>
+      <include name="../jbr!/java.instrument"/>
+      <include name="../jbr!/java.logging"/>
+      <include name="../jbr!/java.management"/>
+      <include name="../jbr!/java.management.rmi"/>
+      <include name="../jbr!/java.naming"/>
+      <include name="../jbr!/java.net.http"/>
+      <include name="../jbr!/java.prefs"/>
+      <include name="../jbr!/java.rmi"/>
+      <include name="../jbr!/java.scripting"/>
+      <include name="../jbr!/java.se"/>
+      <include name="../jbr!/java.security.jgss"/>
+      <include name="../jbr!/java.security.sasl"/>
+      <include name="../jbr!/java.smartcardio"/>
+      <include name="../jbr!/java.sql"/>
+      <include name="../jbr!/java.sql.rowset"/>
+      <include name="../jbr!/java.transaction.xa"/>
+      <include name="../jbr!/java.xml"/>
+      <include name="../jbr!/java.xml.crypto"/>
+      <include name="../jbr!/javafx.base"/>
+      <include name="../jbr!/javafx.controls"/>
+      <include name="../jbr!/javafx.fxml"/>
+      <include name="../jbr!/javafx.graphics"/>
+      <include name="../jbr!/javafx.media"/>
+      <include name="../jbr!/javafx.swing"/>
+      <include name="../jbr!/javafx.web"/>
+      <include name="../jbr!/jdk.accessibility"/>
+      <include name="../jbr!/jdk.aot"/>
+      <include name="../jbr!/jdk.attach"/>
+      <include name="../jbr!/jdk.charsets"/>
+      <include name="../jbr!/jdk.compiler"/>
+      <include name="../jbr!/jdk.crypto.cryptoki"/>
+      <include name="../jbr!/jdk.crypto.ec"/>
+      <include name="../jbr!/jdk.dynalink"/>
+      <include name="../jbr!/jdk.httpserver"/>
+      <include name="../jbr!/jdk.internal.ed"/>
+      <include name="../jbr!/jdk.internal.jvmstat"/>
+      <include name="../jbr!/jdk.internal.le"/>
+      <include name="../jbr!/jdk.internal.vm.ci"/>
+      <include name="../jbr!/jdk.internal.vm.compiler"/>
+      <include name="../jbr!/jdk.internal.vm.compiler.management"/>
+      <include name="../jbr!/jdk.jdi"/>
+      <include name="../jbr!/jdk.jdwp.agent"/>
+      <include name="../jbr!/jdk.jfr"/>
+      <include name="../jbr!/jdk.jsobject"/>
+      <include name="../jbr!/jdk.localedata"/>
+      <include name="../jbr!/jdk.management"/>
+      <include name="../jbr!/jdk.management.agent"/>
+      <include name="../jbr!/jdk.management.jfr"/>
+      <include name="../jbr!/jdk.naming.dns"/>
+      <include name="../jbr!/jdk.naming.rmi"/>
+      <include name="../jbr!/jdk.net"/>
+      <include name="../jbr!/jdk.pack"/>
+      <include name="../jbr!/jdk.scripting.nashorn"/>
+      <include name="../jbr!/jdk.scripting.nashorn.shell"/>
+      <include name="../jbr!/jdk.sctp"/>
+      <include name="../jbr!/jdk.security.auth"/>
+      <include name="../jbr!/jdk.security.jgss"/>
+      <include name="../jbr!/jdk.unsupported"/>
+      <include name="../jbr!/jdk.xml.dom"/>
+      <include name="../jbr!/jdk.zipfs"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.11}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.11}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.11"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.gradle:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_cglib:cglib:3.3.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/cglib/cglib/3.3.0/c956b9f9708af5901e9cf05701e9b2b1c25027cc/cglib-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.beust:jcommander:1.72.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.beust/jcommander/1.72/6375e521c1e11d6563d4f25a07ce124ccf8cd171/jcommander-1.72.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.codeborne:phantomjsdriver:1.4.4.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.codeborne/phantomjsdriver/1.4.4/e5778e3273f8201bf9e0ff65fb8118f37b84beba/phantomjsdriver-1.4.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.code.findbugs:jsr305:1.3.9.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/1.3.9/40719ea6961c0cb6afaeb6a921eaa1f6afd4cfdf/jsr305-1.3.9.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.code.gson:gson:2.8.4.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.4/d0de1ca9b69e69d1d497ee3c6009d015f64dad57/gson-2.8.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.errorprone:error_prone_annotations:2.1.3.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.errorprone/error_prone_annotations/2.1.3/39b109f2cd352b2d71b52a3b5a1a9850e1dc304b/error_prone_annotations-2.1.3.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.guava:guava:25.0-jre.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.guava/guava/25.0-jre/7319c34fa5866a85b6bad445adad69d402323129/guava-25.0-jre.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.inject:guice:4.2.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.inject/guice/4.2.2/6dacbe18e5eaa7f6c9c36db33b42e7985e94ce77/guice-4.2.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.j2objc:j2objc-annotations:1.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.j2objc/j2objc-annotations/1.1/ed28ded51a8b1c6b112568def5f4b455e6809019/j2objc-annotations-1.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.google.jimfs:jimfs:1.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.google.jimfs/jimfs/1.1/8fbd0579dc68aba6186935cc1bee21d2f3e7ec1c/jimfs-1.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.ibm.icu:icu4j:59.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.ibm.icu/icu4j/59.1/6f06e820cf4c8968bbbaae66ae0b33f6a256b57f/icu4j-59.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.jhlabs:filters:2.0.235.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.jhlabs/filters/2.0.235/af6a2dfefef70f1ab2d7a8d1f8173f67e276b3f4/filters-2.0.235.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.openhtmltopdf:openhtmltopdf-core:0.0.1-rc13.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.openhtmltopdf/openhtmltopdf-core/0.0.1-RC13/2d3108c06026884114f56c85d2a3db72a6da7d12/openhtmltopdf-core-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.openhtmltopdf:openhtmltopdf-jsoup-dom-converter:0.0.1-rc13.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.openhtmltopdf/openhtmltopdf-jsoup-dom-converter/0.0.1-RC13/2887c313e229da6667bd18c3698959191b6da787/openhtmltopdf-jsoup-dom-converter-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.openhtmltopdf:openhtmltopdf-pdfbox:0.0.1-rc13.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.openhtmltopdf/openhtmltopdf-pdfbox/0.0.1-RC13/11d082f6959e07f470f0449462fd1629e5c962d6/openhtmltopdf-pdfbox-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.openhtmltopdf:openhtmltopdf-rtl-support:0.0.1-rc13.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.openhtmltopdf/openhtmltopdf-rtl-support/0.0.1-RC13/bc23d414d5b5c888d35b76d2f53e3ba2d69952c3/openhtmltopdf-rtl-support-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.paulhammant:ngwebdriver:1.1.4.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.paulhammant/ngwebdriver/1.1.4/f90f30f1db695a41caa026d1af6d42be9c6bafdf/ngwebdriver-1.1.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.squareup.okhttp3:okhttp:3.11.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.11.0/75966e05a49046ca2ae734e5626f28837a8d1e82/okhttp-3.11.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.squareup.okio:okio:1.14.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.14.0/102d7be47241d781ef95f1581d414b0943053130/okio-1.14.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.sun.xml.bind:jaxb-core:2.3.0.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-core/2.3.0.1/23574ca124d0a694721ce3ef13cd720095f18fdd/jaxb-core-2.3.0.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.sun.xml.bind:jaxb-impl:2.3.0.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.sun.xml.bind/jaxb-impl/2.3.0.1/2e979dabb3e5e74a0686115075956391a14dece8/jaxb-impl-2.3.0.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.thoughtworks.xstream:xstream:1.4.9.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.thoughtworks.xstream/xstream/1.4.9/c43f6e6bfa79b56e04a8898a923c3cf7144dd460/xstream-1.4.9.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.typesafe:config:1.3.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.typesafe/config/1.3.1/2cf7a6cc79732e3bdf1647d7404279900ca63eb0/config-1.3.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-all:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-all/0.34.30/dedf4ace1834e62c5baaa6433bee892efc759171/flexmark-all-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-abbreviation:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-abbreviation/0.34.30/59f0b9d1e4d75e8eb263b8a580a0647efdcbbe42/flexmark-ext-abbreviation-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-admonition:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-admonition/0.34.30/a4963e5efddb05623031c6cb89e2567c3ecc28c0/flexmark-ext-admonition-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-anchorlink:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-anchorlink/0.34.30/1768479cba49556796f555475aab35915b94e0e4/flexmark-ext-anchorlink-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-aside:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-aside/0.34.30/bec28d073c7acb4c98498d5644553fb5f2c9dba5/flexmark-ext-aside-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-attributes:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-attributes/0.34.30/1e042429298474d6ebe2a173e1b6ed1b600a7125/flexmark-ext-attributes-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-autolink:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-autolink/0.34.30/14c6c62c0414ca05182c352582759d74f361bed7/flexmark-ext-autolink-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-definition:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-definition/0.34.30/f48196e379c5abbdbae2e3b8e363b0b91185a8cc/flexmark-ext-definition-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-emoji:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-emoji/0.34.30/40df469b2c84bfc1bca30bf0d1241d3c6cb7fa5e/flexmark-ext-emoji-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-enumerated-reference:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-enumerated-reference/0.34.30/cec510e61a608bd1f7043c6836ac2045a008c933/flexmark-ext-enumerated-reference-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-escaped-character:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-escaped-character/0.34.30/7de709fa2b34ae144280984f9e1e2cd4a4eeab3/flexmark-ext-escaped-character-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-footnotes:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-footnotes/0.34.30/3ea24e843323f7c276e853dc014647dd84e57661/flexmark-ext-footnotes-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-gfm-issues:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-issues/0.34.30/3fd578a4de638ceb85e622d0282c45c9fae0259d/flexmark-ext-gfm-issues-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-gfm-strikethrough:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-strikethrough/0.34.30/e62b6b5255292691c9c884dca911b774b362cd04/flexmark-ext-gfm-strikethrough-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-gfm-tables:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-tables/0.34.30/c514ddb310bcd6e1336772722d2a452f8c017339/flexmark-ext-gfm-tables-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-gfm-tasklist:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-tasklist/0.34.30/59cb6c03eb7f861a0c7d604cbe0372762734f32e/flexmark-ext-gfm-tasklist-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-gfm-users:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gfm-users/0.34.30/a5903459def15c8643df6578dc5041612f506d3e/flexmark-ext-gfm-users-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-gitlab:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-gitlab/0.34.30/b5b81e4a2b5ebfa92d12ca021785094b7bcfbad1/flexmark-ext-gitlab-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-ins:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-ins/0.34.30/9098917996111c50920b0bdfa2dee02de8a405f1/flexmark-ext-ins-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-jekyll-front-matter:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-jekyll-front-matter/0.34.30/921b4103cf75737e1dcb6e6142e3ecf6fea47bb2/flexmark-ext-jekyll-front-matter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-jekyll-tag:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-jekyll-tag/0.34.30/619bb18252074e7f7579df3a3e64556c0dd8ae81/flexmark-ext-jekyll-tag-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-media-tags:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-media-tags/0.34.30/cc7250739d744891979a132a5132921f3e44e4b6/flexmark-ext-media-tags-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-superscript:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-superscript/0.34.30/b28b5339e621378066bf59ff7ad4c3f84a89bdc3/flexmark-ext-superscript-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-tables:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-tables/0.34.30/81ed350684e1d32740c09d56e71f7ff6f59b6c69/flexmark-ext-tables-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-toc:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-toc/0.34.30/32cbda7c39f9ac47bb5e1d4bfcef5e4fc1fc7333/flexmark-ext-toc-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-typographic:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-typographic/0.34.30/455fb2a221cff33ae2e85897088a9f3ebe3b8fb3/flexmark-ext-typographic-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-wikilink:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-wikilink/0.34.30/a0f8d052ab8d49676f8f3e1e04979100c41595ad/flexmark-ext-wikilink-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-xwiki-macros:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-xwiki-macros/0.34.30/581eff2c9e08f3114c8ad6b0744d77ec53a02346/flexmark-ext-xwiki-macros-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-yaml-front-matter:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-yaml-front-matter/0.34.30/33bf777d12663be74380eb979e17b2ddc6628646/flexmark-ext-yaml-front-matter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-ext-youtube-embedded:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-ext-youtube-embedded/0.34.30/bdee8af8a33df6d546c9650670e05b73420fde51/flexmark-ext-youtube-embedded-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-formatter:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-formatter/0.34.30/4aee8fbf5c1ab453b5cf5e7302292394d5361118/flexmark-formatter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-html-parser:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-html-parser/0.34.30/1a1996370dc1545d7a4101a03c1069572e0daa2f/flexmark-html-parser-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-jira-converter:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-jira-converter/0.34.30/d599bc89aa63a1d83370ddc838afd5e8d41bc29d/flexmark-jira-converter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-pdf-converter:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-pdf-converter/0.34.30/75a7c23f0e344f9bac9301c3bc6baceef91eb210/flexmark-pdf-converter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-profile-pegdown:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-profile-pegdown/0.34.30/9dab6b7c97ef5743da65d40222612fe6c60813a2/flexmark-profile-pegdown-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-test-util:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-test-util/0.34.30/31b75dfe2ff73b4a9e18c8296a60542c67328d55/flexmark-test-util-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-util:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-util/0.34.30/d09a7024d3d90eee32950a7336cccf88c1830689/flexmark-util-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark-youtrack-converter:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark-youtrack-converter/0.34.30/e3c83ff25b5eb40ffc00b93264f2d0ec41ac85b6/flexmark-youtrack-converter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_com.vladsch.flexmark:flexmark:0.34.30.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/com.vladsch.flexmark/flexmark/0.34.30/1940a7b22e3fc0ed01619e6fc0a8ea6077ace923/flexmark-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-beanutils:commons-beanutils-core:1.8.3.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils-core/1.8.3/75812698e5e859f2cb587c622c4cdfcd61676426/commons-beanutils-core-1.8.3.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-beanutils:commons-beanutils:1.9.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-beanutils/commons-beanutils/1.9.2/7a87d845ad3a155297e8f67d9008f4c1e5656b71/commons-beanutils-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-codec:commons-codec:1.10.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-codec/commons-codec/1.10/4b95f4897fa13f2cd904aee711aeafc0c5295cd8/commons-codec-1.10.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-collections:commons-collections:3.2.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-collections/commons-collections/3.2.2/8ad72fe39fa8c91eaaf12aadb21e0c3661fe26d5/commons-collections-3.2.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-digester:commons-digester:1.8.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-digester/commons-digester/1.8.1/3dec9b9c7ea9342d4dbe8c38560080d85b44a015/commons-digester-1.8.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-io:commons-io:2.6.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.6/815893df5f31da2ece4040fe0a12fd44b577afaf/commons-io-2.6.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-logging:commons-logging:1.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.2/4bfc12adfe4842bf07b657f0369c4cb522955686/commons-logging-1.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-net:commons-net:3.6.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-net/commons-net/3.6/b71de00508dcb078d2b24b5fa7e538636de9b3da/commons-net-3.6.jar"/>
+  </path>
+  
+  <path id="library.gradle:_commons-validator:commons-validator:1.6.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/commons-validator/commons-validator/1.6/e989d1e87cdd60575df0765ed5bac65c905d7908/commons-validator-1.6.jar"/>
+  </path>
+  
+  <path id="library.gradle:_de.rototor.pdfbox:graphics2d:0.12.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/de.rototor.pdfbox/graphics2d/0.12/7df4072cd4d94233bdb9921b07ebaeb8a8508603/graphics2d-0.12.jar"/>
+  </path>
+  
+  <path id="library.gradle:_es.nitaur.markdown:txtmark:0.16.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/es.nitaur.markdown/txtmark/0.16/3b51485b8d80fd4a3650d2b5d83127d0fa002e0/txtmark-0.16.jar"/>
+  </path>
+  
+  <path id="library.gradle:_info.cukes:cucumber-html:0.2.6.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/info.cukes/cucumber-html/0.2.6/e2577a2a51fdb821e877433ae55ac9211ffcb16a/cucumber-html-0.2.6.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.appium:java-client:7.2.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.appium/java-client/7.2.0/b0ab919de4f28da00e53a87e1142af038a3b052c/java-client-7.2.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.cucumber:cucumber-core:2.4.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-core/2.4.0/dd7a961cc819c6422f669fce5bf9616b48877029/cucumber-core-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.cucumber:cucumber-java:2.4.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-java/2.4.0/caf32eff3d7b194a34eccf1ab103196558dc428e/cucumber-java-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.cucumber:cucumber-junit:2.4.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-junit/2.4.0/97bc6f147ebe3888c97933fe38da1d044771d7d2/cucumber-junit-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.cucumber:cucumber-jvm-deps:1.0.6.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.cucumber/cucumber-jvm-deps/1.0.6/f099f06378ef35f9391fa2fbb41ac21d214fe737/cucumber-jvm-deps-1.0.6.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.cucumber:gherkin:5.0.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.cucumber/gherkin/5.0.0/a05c7dd957349d6ce3908771aa5414cb15777eb7/gherkin-5.0.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.cucumber:tag-expressions:1.1.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.cucumber/tag-expressions/1.1.1/a5cfcf43577aae5d314af5438459c2af659a1245/tag-expressions-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.vavr:vavr-match:0.9.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.vavr/vavr-match/0.9.0/454a1d2167c6dd46d3536b8d5db1b78fbc4a2c91/vavr-match-0.9.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_io.vavr:vavr:0.9.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/io.vavr/vavr/0.9.0/3dd71b51838f78ae1b606fe0550b3cdd68bdcaf2/vavr-0.9.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.activation:activation:1.1.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/javax.activation/activation/1.1.1/485de3a253e23f645037828c07f1d7f1af40763a/activation-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.el:javax.el-api:2.2.4.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/javax.el/javax.el-api/2.2.4/1287562cc3f0ff5439ded6f2949e73ce1c0edaab/javax.el-api-2.2.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.inject:javax.inject:1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.servlet:javax.servlet-api:3.1.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/javax.servlet/javax.servlet-api/3.1.0/3cd63d075497751784b2fa84be59432f4905bf7c/javax.servlet-api-3.1.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_javax.xml.bind:jaxb-api:2.2.12.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/javax.xml.bind/jaxb-api/2.2.12/4c83805595b15acf41d71d49e3add7c0e85baaed/jaxb-api-2.2.12.jar"/>
+  </path>
+  
+  <path id="library.gradle:_joda-time:joda-time:2.7.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.7/5599707a3eaad13e889f691b3af78c8c03842195/joda-time-2.7.jar"/>
+  </path>
+  
+  <path id="library.gradle:_junit:junit:4.12.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/junit/junit/4.12/2973d150c0dc1fefe998f834810d68f278ea58ec/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.bytebuddy:byte-buddy-agent:1.10.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.10.1/9b7d95d699d08e92eb51a29b4949ae975325b40b/byte-buddy-agent-1.10.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.bytebuddy:byte-buddy:1.10.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy/1.10.1/11fe565e2b8b857c9dcee66e4170b97abb92530b/byte-buddy-1.10.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.jcip:jcip-annotations:1.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.jcip/jcip-annotations/1.0/afba4942caaeaf46aab0b976afd57cc7c181467e/jcip-annotations-1.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-core:2.0.77.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-core/2.0.77/363a75d13c149237bf8fd0c97b0c69a10b2c3d45/serenity-core-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-cucumber:1.9.45.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-cucumber/1.9.45/24f1ec94e0867c14ccc7d236ca0e6394e5f64f2a/serenity-cucumber-1.9.45.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-model:2.0.77.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-model/2.0.77/14583fba4675c32914ace8a768b1d6d42df73ddb/serenity-model-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-report-resources:2.0.77.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-report-resources/2.0.77/79820c78b7c80b052fa8722c25b022c621f3d152/serenity-report-resources-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-reports:2.0.77.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-reports/2.0.77/c9eca953aea15e6df95ebfeeff1296a7e2786916/serenity-reports-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-screenplay-webdriver:2.0.64.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-screenplay-webdriver/2.0.64/6eaaa54beab011076ee5463a6d6cd7831907589e/serenity-screenplay-webdriver-2.0.64.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-screenplay:2.0.64.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-screenplay/2.0.64/53ac6dc3cab5a815e6b5fad6ff8430b41797cc1c/serenity-screenplay-2.0.64.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.serenity-bdd:serenity-stats:2.0.77.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.serenity-bdd/serenity-stats/2.0.77/ec082d70ba5bd9862fa352d08de8536ef698396f/serenity-stats-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.sf.opencsv:opencsv:2.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.sf.opencsv/opencsv/2.0/97a2765dc2db1083e7c5afcc210db5f7cad3b442/opencsv-2.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.sourceforge.htmlunit:htmlunit-core-js:2.36.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-core-js/2.36.0/47bc8cf3a812169a4ce283515604c6cbab4aa13f/htmlunit-core-js-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit-cssparser/1.5.0/7e40e04f32622e63a30e92ac158f799f67d8ddf0/htmlunit-cssparser-1.5.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.sourceforge.htmlunit:htmlunit:2.36.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.36.0/efe6df9c5bc1284cd1d7952434ea4f85c5a32f72/htmlunit-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.sourceforge.htmlunit:neko-htmlunit:2.36.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/neko-htmlunit/2.36.0/6e999678a3b2813ea71fac4ebc5996b1406e954d/neko-htmlunit-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_net.sourceforge.jexcelapi:jxl:2.6.12.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/net.sourceforge.jexcelapi/jxl/2.6.12/7faf62e0697f7a88954622dfe8c8de33ed142ac7/jxl-2.6.12.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.commons:commons-csv:1.5.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-csv/1.5/e10f140af5b82167640f254fa9d88e35ad74329c/commons-csv-1.5.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.commons:commons-exec:1.3.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-exec/1.3/8dfb9facd0830a27b1b5f29f84593f0aeee7773b/commons-exec-1.3.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.commons:commons-lang3:3.8.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-lang3/3.8.1/6505a72a097d9270f7a9e7bf42c4238283247755/commons-lang3-3.8.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.commons:commons-text:1.7.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-text/1.7/4d7d6dc210f80d0bff18645cc534a0c45324d0d6/commons-text-1.7.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.httpcomponents:httpclient:4.5.9.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.5.9/a25c1be5ce99d0ce99aa43eb982868c796dd0775/httpclient-4.5.9.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.httpcomponents:httpcore:4.4.11.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.4.11/de748cf874e4e193b42eceea9fe5574fabb9d4df/httpcore-4.4.11.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.httpcomponents:httpmime:4.5.9.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.5.9/c5302bb51f3316b96c0111254ce26994358fb1cc/httpmime-4.5.9.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.pdfbox:fontbox:2.0.8.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/fontbox/2.0.8/52f852fcfc7481d45efdffd224eb78b85981b17b/fontbox-2.0.8.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.pdfbox:pdfbox:2.0.8.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/pdfbox/2.0.8/17bdf273d66f3afe41eedb9d3ab6a7b819c44a0c/pdfbox-2.0.8.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.apache.pdfbox:xmpbox:2.0.8.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/xmpbox/2.0.8/bcce394a05b96c6155d27e144eb6e359ee7ff6b1/xmpbox-2.0.8.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.asciidoctor:asciidoctorj:1.5.6.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.asciidoctor/asciidoctorj/1.5.6/bb757d4b8b0f8438ce2ed781f6688cc6c01d9237/asciidoctorj-1.5.6.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.aspectj:aspectjweaver:1.9.4.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.aspectj/aspectjweaver/1.9.4/9205229878f3d62fbd3a32a0fb6be2d6ad8589a9/aspectjweaver-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.assertj:assertj-core:3.8.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.assertj/assertj-core/3.8.0/b209d90ff2e279bee3e02547ee7b11349c52d0e3/assertj-core-3.8.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.awaitility:awaitility:4.0.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.awaitility/awaitility/4.0.1/b1b83c03c9d58c8b1aaf116b1e5365fa2ed2b572/awaitility-4.0.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.brotli:dec:0.1.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.brotli/dec/0.1.2/c26a897ae0d524809eef1c786cc6183b4ddcc3b/dec-0.1.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.checkerframework:checker-compat-qual:2.0.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.checkerframework/checker-compat-qual/2.0.0/fc89b03860d11d6213d0154a62bcd1c2f69b9efa/checker-compat-qual-2.0.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.codehaus.groovy:groovy:2.5.5.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.codehaus.groovy/groovy/2.5.5/2388f952b369f6b11cde8e15ec872e9ca3e0ff3e/groovy-2.5.5.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.codehaus.mojo:animal-sniffer-annotations:1.14.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.codehaus.mojo/animal-sniffer-annotations/1.14/775b7e22fb10026eed3f86e8dc556dfafe35f2d5/animal-sniffer-annotations-1.14.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-api/9.4.20.v20190813/8d608b5dce8e7b3188fde38d908494788e47f55d/websocket-api-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-client/9.4.20.v20190813/6575537348092bc18e065fa9fe5bb333cae6e842/websocket-client-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.websocket/websocket-common/9.4.20.v20190813/2ab33f93662c7270ec0dea205c47f7b40e9a060b/websocket-common-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty:jetty-client:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-client/9.4.20.v20190813/dcee62915067cba0b3ed331d14f75e5d753c566d/jetty-client-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty:jetty-http:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-http/9.4.20.v20190813/edda2fd904a881114aba79e2f881c6f4004e8148/jetty-http-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty:jetty-io:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-io/9.4.20.v20190813/b246c5e350d0aa1b310c07ec362755c34a1cc8cb/jetty-io-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty:jetty-util:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-util/9.4.20.v20190813/8ee753d673a124ba2880361871ab13f6863b2d40/jetty-util-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.eclipse.jetty:jetty-xml:9.4.20.v20190813.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.eclipse.jetty/jetty-xml/9.4.20.v20190813/212d5f1fbc45c25ce0995ea861448918a0397338/jetty-xml-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.fluentlenium:fluentlenium-core:0.10.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.fluentlenium/fluentlenium-core/0.10.2/8795bd4ce7050f0c45b772e8d3b36c39646e2f0b/fluentlenium-core-0.10.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.freemarker:freemarker:2.3.28.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.freemarker/freemarker/2.3.28/7200064467a935052f99d114c2c05c3d189bc6d6/freemarker-2.3.28.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.glassfish.web:javax.el:2.2.4.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.glassfish.web/javax.el/2.2.4/a50914ff519682e185bca4385b4313b8c8a81775/javax.el-2.2.4.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.hamcrest:hamcrest-library:1.3.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.hamcrest:hamcrest:2.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest/2.1/9420ba32c29217b54eebd26ff7f9234d31c3fbb2/hamcrest-2.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.imgscalr:imgscalr-lib:4.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.imgscalr/imgscalr-lib/4.2/e2838f7119361511ef7d54fe0d502bf07f3325eb/imgscalr-lib-4.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib-common:1.3.31.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.31/20c34a04ea25cb1ef0139598bd67c764562cb170/kotlin-stdlib-common-1.3.31.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.jetbrains.kotlin:kotlin-stdlib:1.3.31.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.31/11289d20fd95ae219333f3456072be9f081c30cc/kotlin-stdlib-1.3.31.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.jetbrains:annotations:13.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.jruby:jruby-complete:1.7.26.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.jruby/jruby-complete/1.7.26/c09885af02af34266ed929f94cedcf87cc965f46/jruby-complete-1.7.26.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.jsoup:jsoup:1.10.3.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.10.3/b842f960942503cf1abbcc8c173a7f2c19d43726/jsoup-1.10.3.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.mockito:mockito-core:3.1.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.mockito/mockito-core/3.1.0/53137a5fccdccb0d907d409dc68a282aab87c968/mockito-core-3.1.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.nibor.autolink:autolink:0.6.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.nibor.autolink/autolink/0.6.0/3986d016a14e8c81afeec752f19af29b20e8367b/autolink-0.6.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.objenesis:objenesis:3.0.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/3.0.1/11cfac598df9dc48bb9ed9357ed04212694b7808/objenesis-3.0.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.ow2.asm:asm:7.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/7.2/fa637eb67eb7628c915d73762b681ae7ff0b9731/asm-7.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:htmlunit-driver:2.36.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/htmlunit-driver/2.36.0/34254f1d8273c273fa1692d463c0b08b9ef9c31e/htmlunit-driver-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:jetty-repacked:9.4.12.v20180830.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/jetty-repacked/9.4.12.v20180830/e42f240e395e4ea083f797c284e654c28e25166f/jetty-repacked-9.4.12.v20180830.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-api:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-api/3.141.59/e006ffd3aa7841e6e9125d9e6691b3a6b7592b05/selenium-api-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-chrome-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-chrome-driver/3.141.59/67137314736c6a2f39a8aa59a562e9616ae5f77e/selenium-chrome-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-edge-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-edge-driver/3.141.59/fc09c66f2d0b33b0816d770761ad1d599ef0df29/selenium-edge-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-firefox-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-firefox-driver/3.141.59/a99f2fe2a42747ed9809d4f62f51a9e1b336dde8/selenium-firefox-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-ie-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-ie-driver/3.141.59/677b9b414a3a9bb2aeea89042a7b326edeb13a82/selenium-ie-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-java:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-java/3.141.59/e8e20b741299cb8ffedbd2925a3ab69d08b41063/selenium-java-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-opera-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-opera-driver/3.141.59/6b11ed01182bfd8bb62ddeae34cf9eadd3cfc7ff/selenium-opera-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-remote-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-remote-driver/3.141.59/1c79ca890c312ff9916bd95df4f0c5182ec722d8/selenium-remote-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-safari-driver:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-safari-driver/3.141.59/a32b5b88f46ea4b0356079f0d2e2217543923046/selenium-safari-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-server:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-server/3.141.59/970059131887e04ede14b433a7a505a793585bce/selenium-server-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.seleniumhq.selenium:selenium-support:3.141.59.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.seleniumhq.selenium/selenium-support/3.141.59/8735de5049acf0e761defc65ee5837d6541abaf5/selenium-support-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.slf4j:slf4j-api:1.7.26.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.slf4j/slf4j-api/1.7.26/77100a62c2e6f04b53977b9f541044d7d722693d/slf4j-api-1.7.26.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-aop:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/5.1.2.RELEASE/bc3cdf3c81bc0a3482cc7f6b9e00ab76847056a7/spring-aop-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-beans:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/5.1.2.RELEASE/5d513701a79c92f0549574f5170a05c4af7c893d/spring-beans-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-context-support:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-context-support/5.1.2.RELEASE/ef36732e97caa168e12d2bd2b46719e54c066afa/spring-context-support-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-context:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/5.1.2.RELEASE/5c85bc522a5adac9b09b7204fa20708519ab6a11/spring-context-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-core:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/5.1.2.RELEASE/b9b00d4075c92761cfd4e527e0bdce1931b4f3dc/spring-core-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-expression:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/5.1.2.RELEASE/3c16b062785e4c101db6b754fcb34a77c1e912c/spring-expression-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.springframework:spring-jcl:5.1.2.release.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.springframework/spring-jcl/5.1.2.RELEASE/f0d7165b6cfb90356da4f25b14a6437fdef1ec8a/spring-jcl-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.gradle:_org.yaml:snakeyaml:1.19.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.19/2d998d3d674b172a588e54ab619854d073f555b5/snakeyaml-1.19.jar"/>
+  </path>
+  
+  <path id="library.gradle:_uk.com.robust-it:cloning:1.9.10.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/uk.com.robust-it/cloning/1.9.10/255f10403c288a1409afda9e1db6c953361d56ab/cloning-1.9.10.jar"/>
+  </path>
+  
+  <path id="library.gradle:_xalan:serializer:2.7.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/xalan/serializer/2.7.2/24247f3bb052ee068971393bdb83e04512bb1c3c/serializer-2.7.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_xalan:xalan:2.7.2.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/xalan/xalan/2.7.2/d55d3f02a56ec4c25695fe67e1334ff8c2ecea23/xalan-2.7.2.jar"/>
+  </path>
+  
+  <path id="library.gradle:_xerces:xercesimpl:2.12.0.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/xerces/xercesImpl/2.12.0/f02c844149fd306601f20e0b34853a670bef7fa2/xercesImpl-2.12.0.jar"/>
+  </path>
+  
+  <path id="library.gradle:_xml-apis:xml-apis:1.4.01.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/xml-apis/xml-apis/1.4.01/3789d9fada2d3d458c4ba2de349d48780f381ee3/xml-apis-1.4.01.jar"/>
+  </path>
+  
+  <path id="library.gradle:_xmlpull:xmlpull:1.1.3.1.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/xmlpull/xmlpull/1.1.3.1/2b8e230d2ab644e4ecaa94db7cdedbc40c805dfa/xmlpull-1.1.3.1.jar"/>
+  </path>
+  
+  <path id="library.gradle:_xpp3:xpp3_min:1.1.4c.classpath">
+    <pathelement location="${basedir}/../../.gradle/caches/modules-2/files-2.1/xpp3/xpp3_min/1.1.4c/19d4e90b43059058f6e056f794f0ea4030d60b86/xpp3_min-1.1.4c.jar"/>
+  </path>
+  
+  <path id="library.maven:_aopalliance:aopalliance:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_cglib:cglib:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/cglib/cglib/3.3.0/cglib-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.beust:jcommander:1.72.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/beust/jcommander/1.72/jcommander-1.72.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.codeborne:phantomjsdriver:1.4.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/codeborne/phantomjsdriver/1.4.4/phantomjsdriver-1.4.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.code.gson:gson:2.8.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/code/gson/gson/2.8.4/gson-2.8.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.errorprone:error_prone_annotations:2.1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/errorprone/error_prone_annotations/2.1.3/error_prone_annotations-2.1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.guava:guava:25.0-jre.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/guava/guava/25.0-jre/guava-25.0-jre.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.inject:guice:4.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/inject/guice/4.2.2/guice-4.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.j2objc:j2objc-annotations:1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.google.jimfs:jimfs:1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/google/jimfs/jimfs/1.1/jimfs-1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.ibm.icu:icu4j:59.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.jhlabs:filters:2.0.235.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/jhlabs/filters/2.0.235/filters-2.0.235.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.openhtmltopdf:openhtmltopdf-core:0.0.1-rc13.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-core/0.0.1-RC13/openhtmltopdf-core-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.openhtmltopdf:openhtmltopdf-jsoup-dom-converter:0.0.1-rc13.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-jsoup-dom-converter/0.0.1-RC13/openhtmltopdf-jsoup-dom-converter-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.openhtmltopdf:openhtmltopdf-pdfbox:0.0.1-rc13.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-pdfbox/0.0.1-RC13/openhtmltopdf-pdfbox-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.openhtmltopdf:openhtmltopdf-rtl-support:0.0.1-rc13.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/openhtmltopdf/openhtmltopdf-rtl-support/0.0.1-RC13/openhtmltopdf-rtl-support-0.0.1-RC13.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.paulhammant:ngwebdriver:1.1.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/paulhammant/ngwebdriver/1.1.4/ngwebdriver-1.1.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.squareup.okhttp3:okhttp:3.11.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/squareup/okhttp3/okhttp/3.11.0/okhttp-3.11.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.squareup.okio:okio:1.14.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/squareup/okio/okio/1.14.0/okio-1.14.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.xml.bind:jaxb-core:2.3.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/xml/bind/jaxb-core/2.3.0.1/jaxb-core-2.3.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.xml.bind:jaxb-impl:2.3.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/xml/bind/jaxb-impl/2.3.0.1/jaxb-impl-2.3.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.sun.xml.bind:jaxb-osgi:2.2.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/sun/xml/bind/jaxb-osgi/2.2.10/jaxb-osgi-2.2.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.thoughtworks.xstream:xstream:1.4.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/thoughtworks/xstream/xstream/1.4.9/xstream-1.4.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.typesafe:config:1.3.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/typesafe/config/1.3.1/config-1.3.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-all:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-all/0.34.30/flexmark-all-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-abbreviation:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-abbreviation/0.34.30/flexmark-ext-abbreviation-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-admonition:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-admonition/0.34.30/flexmark-ext-admonition-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-anchorlink:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-anchorlink/0.34.30/flexmark-ext-anchorlink-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-aside:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-aside/0.34.30/flexmark-ext-aside-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-attributes:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-attributes/0.34.30/flexmark-ext-attributes-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-autolink:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-autolink/0.34.30/flexmark-ext-autolink-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-definition:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-definition/0.34.30/flexmark-ext-definition-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-emoji:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-emoji/0.34.30/flexmark-ext-emoji-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-enumerated-reference:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-enumerated-reference/0.34.30/flexmark-ext-enumerated-reference-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-escaped-character:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-escaped-character/0.34.30/flexmark-ext-escaped-character-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-footnotes:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-footnotes/0.34.30/flexmark-ext-footnotes-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-gfm-issues:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-issues/0.34.30/flexmark-ext-gfm-issues-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-gfm-strikethrough:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-strikethrough/0.34.30/flexmark-ext-gfm-strikethrough-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-gfm-tables:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tables/0.34.30/flexmark-ext-gfm-tables-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-gfm-tasklist:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-tasklist/0.34.30/flexmark-ext-gfm-tasklist-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-gfm-users:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gfm-users/0.34.30/flexmark-ext-gfm-users-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-gitlab:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-gitlab/0.34.30/flexmark-ext-gitlab-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-ins:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-ins/0.34.30/flexmark-ext-ins-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-jekyll-front-matter:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-front-matter/0.34.30/flexmark-ext-jekyll-front-matter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-jekyll-tag:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-jekyll-tag/0.34.30/flexmark-ext-jekyll-tag-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-media-tags:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-media-tags/0.34.30/flexmark-ext-media-tags-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-superscript:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-superscript/0.34.30/flexmark-ext-superscript-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-tables:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-tables/0.34.30/flexmark-ext-tables-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-toc:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-toc/0.34.30/flexmark-ext-toc-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-typographic:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-typographic/0.34.30/flexmark-ext-typographic-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-wikilink:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-wikilink/0.34.30/flexmark-ext-wikilink-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-xwiki-macros:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-xwiki-macros/0.34.30/flexmark-ext-xwiki-macros-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-yaml-front-matter:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-yaml-front-matter/0.34.30/flexmark-ext-yaml-front-matter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-ext-youtube-embedded:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-ext-youtube-embedded/0.34.30/flexmark-ext-youtube-embedded-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-formatter:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-formatter/0.34.30/flexmark-formatter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-html-parser:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-html-parser/0.34.30/flexmark-html-parser-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-jira-converter:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-jira-converter/0.34.30/flexmark-jira-converter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-pdf-converter:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-pdf-converter/0.34.30/flexmark-pdf-converter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-profile-pegdown:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-profile-pegdown/0.34.30/flexmark-profile-pegdown-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-test-util:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-test-util/0.34.30/flexmark-test-util-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-util:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-util/0.34.30/flexmark-util-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark-youtrack-converter:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark-youtrack-converter/0.34.30/flexmark-youtrack-converter-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_com.vladsch.flexmark:flexmark:0.34.30.classpath">
+    <pathelement location="${path.variable.maven_repository}/com/vladsch/flexmark/flexmark/0.34.30/flexmark-0.34.30.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-beanutils:commons-beanutils-core:1.8.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils-core/1.8.3/commons-beanutils-core-1.8.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-beanutils:commons-beanutils:1.9.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-codec:commons-codec:1.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-codec/commons-codec/1.10/commons-codec-1.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-collections:commons-collections:3.2.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-digester:commons-digester:1.8.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-digester/commons-digester/1.8.1/commons-digester-1.8.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-io:commons-io:2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-io/commons-io/2.6/commons-io-2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-logging:commons-logging:1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-net:commons-net:3.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-net/commons-net/3.6/commons-net-3.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_commons-validator:commons-validator:1.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/commons-validator/commons-validator/1.6/commons-validator-1.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_de.rototor.pdfbox:graphics2d:0.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/de/rototor/pdfbox/graphics2d/0.12/graphics2d-0.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_es.nitaur.markdown:txtmark:0.16.classpath">
+    <pathelement location="${path.variable.maven_repository}/es/nitaur/markdown/txtmark/0.16/txtmark-0.16.jar"/>
+  </path>
+  
+  <path id="library.maven:_info.cukes:cucumber-html:0.2.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/info/cukes/cucumber-html/0.2.6/cucumber-html-0.2.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.appium:java-client:7.2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/appium/java-client/7.2.0/java-client-7.2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.cucumber:cucumber-core:2.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/cucumber/cucumber-core/2.4.0/cucumber-core-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.cucumber:cucumber-java:2.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/cucumber/cucumber-java/2.4.0/cucumber-java-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.cucumber:cucumber-junit:2.4.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/cucumber/cucumber-junit/2.4.0/cucumber-junit-2.4.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.cucumber:cucumber-jvm-deps:1.0.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/cucumber/cucumber-jvm-deps/1.0.6/cucumber-jvm-deps-1.0.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.cucumber:gherkin:5.0.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/cucumber/gherkin/5.0.0/gherkin-5.0.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.cucumber:tag-expressions:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/cucumber/tag-expressions/1.1.1/tag-expressions-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.rest-assured:json-path:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/rest-assured/json-path/3.3.0/json-path-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.rest-assured:rest-assured-common:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/rest-assured/rest-assured-common/3.3.0/rest-assured-common-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.rest-assured:rest-assured:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/rest-assured/rest-assured/3.3.0/rest-assured-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.rest-assured:xml-path:3.3.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/rest-assured/xml-path/3.3.0/xml-path-3.3.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.vavr:vavr-match:0.9.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/vavr/vavr-match/0.9.0/vavr-match-0.9.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_io.vavr:vavr:0.9.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/io/vavr/vavr/0.9.0/vavr-0.9.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.activation:activation:1.1.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/activation/activation/1.1.1/activation-1.1.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.el:javax.el-api:2.2.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/el/javax.el-api/2.2.4/javax.el-api-2.2.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.inject:javax.inject:1.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.servlet:javax.servlet-api:3.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_javax.xml.bind:jaxb-api:2.2.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/javax/xml/bind/jaxb-api/2.2.12/jaxb-api-2.2.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_joda-time:joda-time:2.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/joda-time/joda-time/2.7/joda-time-2.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_junit:junit:4.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/junit/junit/4.12/junit-4.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.bytebuddy:byte-buddy-agent:1.10.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/bytebuddy/byte-buddy-agent/1.10.1/byte-buddy-agent-1.10.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.bytebuddy:byte-buddy:1.10.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/bytebuddy/byte-buddy/1.10.1/byte-buddy-1.10.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.jcip:jcip-annotations:1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/jcip/jcip-annotations/1.0/jcip-annotations-1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-core:2.0.77.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-core/2.0.77/serenity-core-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-cucumber:1.9.45.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-cucumber/1.9.45/serenity-cucumber-1.9.45.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-model:2.0.77.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-model/2.0.77/serenity-model-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-report-resources:2.0.77.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-report-resources/2.0.77/serenity-report-resources-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-reports:2.0.77.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-reports/2.0.77/serenity-reports-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-rest-assured:2.0.80.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-rest-assured/2.0.80/serenity-rest-assured-2.0.80.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-screenplay-webdriver:2.0.64.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-screenplay-webdriver/2.0.64/serenity-screenplay-webdriver-2.0.64.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-screenplay:2.0.64.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-screenplay/2.0.64/serenity-screenplay-2.0.64.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.serenity-bdd:serenity-stats:2.0.77.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/serenity-bdd/serenity-stats/2.0.77/serenity-stats-2.0.77.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sf.opencsv:opencsv:2.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sf/opencsv/opencsv/2.0/opencsv-2.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sourceforge.htmlunit:htmlunit-core-js:2.36.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sourceforge/htmlunit/htmlunit-core-js/2.36.0/htmlunit-core-js-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sourceforge.htmlunit:htmlunit-cssparser:1.5.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sourceforge/htmlunit/htmlunit-cssparser/1.5.0/htmlunit-cssparser-1.5.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sourceforge.htmlunit:htmlunit:2.36.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sourceforge/htmlunit/htmlunit/2.36.0/htmlunit-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sourceforge.htmlunit:neko-htmlunit:2.36.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sourceforge/htmlunit/neko-htmlunit/2.36.0/neko-htmlunit-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_net.sourceforge.jexcelapi:jxl:2.6.12.classpath">
+    <pathelement location="${path.variable.maven_repository}/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-csv:1.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-csv/1.5/commons-csv-1.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-exec:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-exec/1.3/commons-exec-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-lang3:3.8.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-lang3/3.8.1/commons-lang3-3.8.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.commons:commons-text:1.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/commons/commons-text/1.6/commons-text-1.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpclient:4.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpclient/4.5.5/httpclient-4.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpcore:4.4.9.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpcore/4.4.9/httpcore-4.4.9.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.httpcomponents:httpmime:4.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/httpcomponents/httpmime/4.5.5/httpmime-4.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.pdfbox:fontbox:2.0.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/pdfbox/fontbox/2.0.8/fontbox-2.0.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.pdfbox:pdfbox:2.0.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/pdfbox/pdfbox/2.0.8/pdfbox-2.0.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.pdfbox:xmpbox:2.0.8.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/pdfbox/xmpbox/2.0.8/xmpbox-2.0.8.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.apache.sling:org.apache.sling.javax.activation:0.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/apache/sling/org.apache.sling.javax.activation/0.1.0/org.apache.sling.javax.activation-0.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.asciidoctor:asciidoctorj:1.5.6.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/asciidoctor/asciidoctorj/1.5.6/asciidoctorj-1.5.6.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.aspectj:aspectjweaver:1.9.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/aspectj/aspectjweaver/1.9.4/aspectjweaver-1.9.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.assertj:assertj-core:3.8.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/assertj/assertj-core/3.8.0/assertj-core-3.8.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.awaitility:awaitility:4.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/awaitility/awaitility/4.0.1/awaitility-4.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.brotli:dec:0.1.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/brotli/dec/0.1.2/dec-0.1.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.ccil.cowan.tagsoup:tagsoup:1.2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.checkerframework:checker-compat-qual:2.0.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/checkerframework/checker-compat-qual/2.0.0/checker-compat-qual-2.0.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.groovy:groovy-json:2.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/groovy/groovy-json/2.5.5/groovy-json-2.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.groovy:groovy-xml:2.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/groovy/groovy-xml/2.5.5/groovy-xml-2.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.groovy:groovy:2.5.5.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/groovy/groovy/2.5.5/groovy-2.5.5.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.codehaus.mojo:animal-sniffer-annotations:1.14.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty.websocket:websocket-api:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/websocket/websocket-api/9.4.20.v20190813/websocket-api-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty.websocket:websocket-client:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/websocket/websocket-client/9.4.20.v20190813/websocket-client-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty.websocket:websocket-common:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/websocket/websocket-common/9.4.20.v20190813/websocket-common-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-client:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-client/9.4.20.v20190813/jetty-client-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-http:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-http/9.4.20.v20190813/jetty-http-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-io:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-io/9.4.20.v20190813/jetty-io-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-util:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-util/9.4.20.v20190813/jetty-util-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.eclipse.jetty:jetty-xml:9.4.20.v20190813.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/eclipse/jetty/jetty-xml/9.4.20.v20190813/jetty-xml-9.4.20.v20190813.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.fluentlenium:fluentlenium-core:0.10.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/fluentlenium/fluentlenium-core/0.10.2/fluentlenium-core-0.10.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.freemarker:freemarker:2.3.28.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/freemarker/freemarker/2.3.28/freemarker-2.3.28.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.glassfish.web:javax.el:2.2.4.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/glassfish/web/javax.el/2.2.4/javax.el-2.2.4.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest-library/1.3/hamcrest-library-1.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.hamcrest:hamcrest:2.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/hamcrest/hamcrest/2.1/hamcrest-2.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.imgscalr:imgscalr-lib:4.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/imgscalr/imgscalr-lib/4.2/imgscalr-lib-4.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jetbrains.kotlin:kotlin-stdlib-common:1.3.31.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jetbrains/kotlin/kotlin-stdlib-common/1.3.31/kotlin-stdlib-common-1.3.31.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jetbrains.kotlin:kotlin-stdlib:1.3.31.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jetbrains/kotlin/kotlin-stdlib/1.3.31/kotlin-stdlib-1.3.31.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jetbrains:annotations:13.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jetbrains/annotations/13.0/annotations-13.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jruby:jruby-complete:1.7.26.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jruby/jruby-complete/1.7.26/jruby-complete-1.7.26.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.jsoup:jsoup:1.10.3.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/jsoup/jsoup/1.10.3/jsoup-1.10.3.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.mockito:mockito-core:3.1.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/mockito/mockito-core/3.1.0/mockito-core-3.1.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.nibor.autolink:autolink:0.6.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/nibor/autolink/autolink/0.6.0/autolink-0.6.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.objenesis:objenesis:3.0.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/objenesis/objenesis/3.0.1/objenesis-3.0.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.ow2.asm:asm:7.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/ow2/asm/asm/7.2/asm-7.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.projectlombok:lombok:1.18.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/projectlombok/lombok/1.18.10/lombok-1.18.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:htmlunit-driver:2.36.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/htmlunit-driver/2.36.0/htmlunit-driver-2.36.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:jetty-repacked:9.4.12.v20180830.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/jetty-repacked/9.4.12.v20180830/jetty-repacked-9.4.12.v20180830.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-api:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-api/3.141.59/selenium-api-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-chrome-driver/3.141.59/selenium-chrome-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-edge-driver/3.141.59/selenium-edge-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-firefox-driver/3.141.59/selenium-firefox-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-ie-driver/3.141.59/selenium-ie-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-java:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-java/3.141.59/selenium-java-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-opera-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-opera-driver/3.141.59/selenium-opera-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-remote-driver/3.141.59/selenium-remote-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-safari-driver/3.141.59/selenium-safari-driver-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-server:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-server/3.141.59/selenium-server-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.seleniumhq.selenium:selenium-support:3.141.59.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/seleniumhq/selenium/selenium-support/3.141.59/selenium-support-3.141.59.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-api:1.7.26.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-api/1.7.26/slf4j-api-1.7.26.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.slf4j:slf4j-simple:1.7.7.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/slf4j/slf4j-simple/1.7.7/slf4j-simple-1.7.7.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-aop:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-aop/5.1.2.RELEASE/spring-aop-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-beans:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-beans/5.1.2.RELEASE/spring-beans-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context-support:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context-support/5.1.2.RELEASE/spring-context-support-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-context:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-context/5.1.2.RELEASE/spring-context-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-core:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-core/5.1.2.RELEASE/spring-core-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-expression:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-expression/5.1.2.RELEASE/spring-expression-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.springframework:spring-jcl:5.1.2.release.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/springframework/spring-jcl/5.1.2.RELEASE/spring-jcl-5.1.2.RELEASE.jar"/>
+  </path>
+  
+  <path id="library.maven:_org.yaml:snakeyaml:1.19.classpath">
+    <pathelement location="${path.variable.maven_repository}/org/yaml/snakeyaml/1.19/snakeyaml-1.19.jar"/>
+  </path>
+  
+  <path id="library.maven:_uk.com.robust-it:cloning:1.9.10.classpath">
+    <pathelement location="${path.variable.maven_repository}/uk/com/robust-it/cloning/1.9.10/cloning-1.9.10.jar"/>
+  </path>
+  
+  <path id="library.maven:_xalan:serializer:2.7.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/xalan/serializer/2.7.2/serializer-2.7.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_xalan:xalan:2.7.2.classpath">
+    <pathelement location="${path.variable.maven_repository}/xalan/xalan/2.7.2/xalan-2.7.2.jar"/>
+  </path>
+  
+  <path id="library.maven:_xerces:xercesimpl:2.12.0.classpath">
+    <pathelement location="${path.variable.maven_repository}/xerces/xercesImpl/2.12.0/xercesImpl-2.12.0.jar"/>
+  </path>
+  
+  <path id="library.maven:_xml-apis:xml-apis:1.4.01.classpath">
+    <pathelement location="${path.variable.maven_repository}/xml-apis/xml-apis/1.4.01/xml-apis-1.4.01.jar"/>
+  </path>
+  
+  <path id="library.maven:_xmlpull:xmlpull:1.1.3.1.classpath">
+    <pathelement location="${path.variable.maven_repository}/xmlpull/xmlpull/1.1.3.1/xmlpull-1.1.3.1.jar"/>
+  </path>
+  
+  <path id="library.maven:_xpp3:xpp3_min:1.1.4c.classpath">
+    <pathelement location="${path.variable.maven_repository}/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="forms-*.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/module_smple-repo.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_smple-repo.main.xml"/>
+  
+  <import file="${basedir}/.idea/modules/module_smple-repo.test.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.smple-repo, clean.module.smple-repo.main, clean.module.smple-repo.test" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.smple-repo, compile.module.smple-repo.main, compile.module.smple-repo.test" description="build all modules"/>
+  
+  <target name="all" depends="build.modules" description="build all"/>
+</project>
