@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 @DefaultUrl("http://localhost:8080/")
 public class HomePage extends PageObject {
+
     public static final String PAGE_URL = "http://localhost:8080/";
 
     @Page

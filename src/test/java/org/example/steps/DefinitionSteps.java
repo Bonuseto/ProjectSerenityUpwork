@@ -1,19 +1,22 @@
 package org.example.steps;
 
-import net.thucydides.core.annotations.Steps;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
+import net.thucydides.core.annotations.Steps;
 import org.example.steps.serenity.EndUserSteps;
+import org.openqa.selenium.WebDriver;
 
 public class DefinitionSteps {
+
     @Steps
     private EndUserSteps userSteps;
 
-    @Given("^User is on a Home page$")
-    public void userIsOnAHomePage() {
-        userSteps.navigateToTheHomePage();
+    WebDriver driver;
+
+    @Given("User likes to browse with '(.*)'")
+    public void userIsOnAHomePage(String browser) {
+        userSteps.navigateToTheHomePage(browser);
     }
 
     @When("^User login with '(.*)' and '(.*)'$")
